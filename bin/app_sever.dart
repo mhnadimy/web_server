@@ -10,7 +10,7 @@ class Server {
 void main(List<String> arguments) async {
   final Server servApp = Server();
   final server = await servApp.createServer(
-      address: InternetAddress("127.0.0.1"), port: 4040);
+      address: InternetAddress("130.185.121.231"), port: 4040);
   print("Address : ${server.address}  port : ${server.port}");
   await handleRequests(server);
 }
