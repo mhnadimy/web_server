@@ -1,15 +1,16 @@
 import 'dart:io';
 
 class Server {
-  Future<HttpServer> createServer({int port = 8080}) async {
-    final address = InternetAddress.loopbackIPv4;
+  Future<HttpServer> createServer(
+      {required InternetAddress address, port = 8080}) async {
     return await HttpServer.bind(address, port);
   }
 }
 
 void main(List<String> arguments) async {
   final Server servApp = Server();
-  final server = await servApp.createServer();
+  final server = await servApp.createServer(
+      address: InternetAddress("127.0.0.1"), port: 4040);
   print("Address : ${server.address}  port : ${server.port}");
   await handleRequests(server);
 }
